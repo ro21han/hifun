@@ -1,0 +1,38 @@
+    
+version		1.0
+type		menu
+id		RunMenu
+name		_Run
+sensitiveon	PROJECT_OPENED
+insensitiveon	PROJECT_CLOSED
+sensitive	False
+
+%% ITEMS
+
+name		_New Run
+tooltip		Create New Run
+insensitiveon	PROJECT_CLOSED
+sensitiveon	PROJECT_OPENED
+sensitive	False
+action
+{{{
+
+from hifun.project import run
+from quickdesktop import projectutils
+p = projectutils.getActiveProject()
+r = run.createRun(p)
+if r:
+   run.editRun(p, r)
+
+}}}
+
+name		_Edit Active Run 
+tooltip		Edit Active Run
+insensitiveon	PROJECT_CLOSED
+sensitiveon	RUN_ACTIVATED
+sensitive	False
+action
+{{{
+from hifun.project import run
+run.editRun()
+}}}

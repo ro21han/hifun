@@ -1,0 +1,34 @@
+    
+version		1.0
+type		menu
+id		runrightclick
+name		Run Right Click
+sensitiveon	None
+insensitiveon	None
+sensitive	True
+
+%% ITEMS
+
+
+name		Edit
+tooltip		Edit 
+insensitiveon	None
+sensitiveon	None
+sensitive	True
+action
+{{{
+from hifun.project import run
+run.editRun(project=project, runname=node['name'])
+}}}
+
+name		Properties
+tooltip		Show Properties
+insensitiveon	None
+sensitiveon	None
+sensitive	True
+action
+{{{
+from hifun import properties
+properties.showProperties(node, nodetype, parent=topwindow)
+}}}
+

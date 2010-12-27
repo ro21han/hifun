@@ -1,0 +1,11 @@
+
+version		1.0
+id		navigator
+type		plugindata
+
+
+%% ITEMS
+
+module		hifun.project.projectview
+class		ProjectNavigator
+location	left

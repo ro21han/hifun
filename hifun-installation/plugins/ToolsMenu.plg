@@ -1,0 +1,22 @@
+    
+version		1.0
+type		menu
+id		ToolsMenu
+name		_Tools
+sensitiveon	None
+insensitiveon	None
+sensitive	True
+
+%% ITEMS
+
+name		_Options
+tooltip		Edit Tool Options
+insensitiveon	None
+sensitiveon	None
+sensitive	True
+action
+{{{
+from hifun import tools
+
+tools.showToolOptions()
+}}}

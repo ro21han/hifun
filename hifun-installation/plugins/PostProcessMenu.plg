@@ -1,0 +1,26 @@
+    
+version		1.0
+type		menu
+id		PostprocessMenu
+name		_Postprocess
+sensitiveon	RUN_ACTIVATED
+insensitiveon	PROJECT_CLOSED
+sensitive	False
+
+%% ITEMS
+
+name		_Postprocess Data
+tooltip		Postprocess Data
+insensitiveon	PROJECT_CLOSED
+sensitiveon	RUN_ACTIVATED
+sensitive	False
+action
+{{{
+
+from hifun.project import postpro
+from quickdesktop import projectutils
+p = projectutils.getActiveProject()
+
+r = postpro.PostProcess(p)
+
+}}}

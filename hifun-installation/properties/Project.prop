@@ -1,0 +1,56 @@
+    
+version		1.0
+type		properties
+id		project
+
+%% PROPERTIES
+
+name		name
+description	Name
+type		String
+
+name		dimension
+description	Dimension
+type		Integer
+
+name		bcs
+description	Boundary Conditions
+type		Table
+columnnames	["Name", "BC"]
+
+name		cellzone
+description	Cellzone Options
+type		Table
+columnnames	['Name',"Option"]
+
+name		activerun
+description	Active Run
+type		String
+
+name		projectdir
+description	Project Directory
+type		String
+
+name		runs
+description	Runs
+type		String
+
+name		mshfile
+description	Mesh File
+type 		String
+
+name		scale
+description	Scale
+type		String
+
+name		ipair
+description	Interface Pairs
+type		Table
+columnnames	["Interface", "Paired With"]
+
+%% LAYOUT
+
+Properties	name, activerun, projectdir, runs, mshfile, dimension, scale
+BC		bcs
+Interface       ipair
+Cellzone	cellzone

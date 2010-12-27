@@ -1,0 +1,22 @@
+    
+version		1.0
+type		menu
+id		projectrightclick
+name		Project Right Click
+sensitiveon	None
+insensitiveon	None
+sensitive	True
+
+%% ITEMS
+
+name		Properties
+tooltip		Show Properties
+insensitiveon	None
+sensitiveon	None
+sensitive	True
+action
+{{{
+from hifun import properties
+properties.showProperties(node, nodetype, parent=topwindow)
+}}}
+

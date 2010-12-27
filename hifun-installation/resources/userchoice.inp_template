@@ -1,0 +1,7 @@
+natureofflow
+itermax,rkstage,schemetype,flowtype
+timestep,cflno,minresidue,initopt
+spatial_accuracy,gradient,uselimiter,akcon
+mode_impli,no_of_sweeps,cfl_option,cflmulti,maxcfl,relaxparam
+implibnd,sa_source_opt
+turbulencemodel

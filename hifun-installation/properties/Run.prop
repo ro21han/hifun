@@ -1,0 +1,19 @@
+    
+version		1.0
+type		properties
+id		run
+
+%% PROPERTIES
+
+name		name
+description	Name
+type		String
+
+name		subdomains
+description	Number of sundomains
+type		Integer
+
+
+
+%% LAYOUT
+

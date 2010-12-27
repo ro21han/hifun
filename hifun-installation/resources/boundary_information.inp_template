@@ -1,0 +1,10 @@
+no_of_walls
+windex_,wall_boundary_type_,wall_temp_type_
+Tvelocities_,Rvelocities_,walltemp_
+no_of_pinlet
+pindex,direction_,inlet_machno_,total_pressure_,total_temp_,specify_direction_
+no_of_cellzones,no_of_porous
+prrous_index,cellzone_id_,rotatingzone_id_
+viscous_res_
+inretial_res_
+rotational_speed_,Rvelocities_

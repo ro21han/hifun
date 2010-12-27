@@ -1,0 +1,12 @@
+
+version		1.0
+id		toolconf
+type		ToolConf
+
+
+%% ITEMS
+
+menubar		mainmenubar
+title		HiFUN
+icon		resource:logo.xpm
+sidebars	["navigator"]

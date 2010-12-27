@@ -1,0 +1,14 @@
+version		1.0
+type		menu.MenuBar
+id		mainmenubar
+sensitiveon	None
+insensitiveon	None
+sensitive	True
+
+%% ITEMS
+FileMenu
+RunMenu
+SolverMenu
+PostprocessMenu
+ToolsMenu
+HelpMenu

@@ -1,0 +1,21 @@
+    
+version		1.0
+type		menu
+id		SolverMenu
+name		_Solver
+sensitiveon	RUN_ACTIVATED
+insensitiveon	PROJECT_CLOSED
+sensitive	False
+
+%% ITEMS
+
+name		_Save
+tooltip		Save Solver Options
+sensitiveon	RUN_ACTIVATED
+insensitiveon	PROJECT_CLOSED
+sensitive	False
+action
+{{{
+from hifun.parsers import solverio
+solverio.writeSolverData()
+}}}

@@ -1,0 +1,21 @@
+    
+version		1.0
+type		menu.Menu
+id		HelpMenu
+name		_Help
+sensitiveon	None
+insensitiveon	None
+sensitive	True
+
+%% ITEMS
+
+name		_About
+tooltip		About HiFUN
+sensitiveon	None
+insensitiveon	None
+sensitive	True
+action
+{{{
+from hifun import help
+help.showAbout(topwindow)
+}}}

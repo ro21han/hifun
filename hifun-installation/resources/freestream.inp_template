@@ -1,0 +1,5 @@
+streamwisedirection,normaldirection,crossflowdirection
+areainsq,refmntarm,xcordmnt,ycordmnt,zcordmnt
+machno,angleofattack,sideslip
+fspressure,fstemp,fsviscocity,fsthermal
+tviscocity

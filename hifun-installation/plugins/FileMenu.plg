@@ -1,0 +1,69 @@
+    
+version		1.0
+type		menu
+id		FileMenu
+name		_File
+sensitiveon	None
+insensitiveon	None
+sensitive	True
+
+%% ITEMS
+
+name		_New Project
+tooltip		New Project
+insensitiveon	PROJECT_OPENED
+sensitiveon	PROJECT_CLOSED
+sensitive	True
+action
+{{{
+from hifun.project import projectimport
+projectimport.runWizard()
+
+}}}
+
+
+name		_Open 
+tooltip		Open
+insensitiveon	PROJECT_OPENED
+sensitiveon	PROJECT_CLOSED
+sensitive	True
+action
+{{{
+from hifun.project import projectimport
+projectimport.openProject()
+
+}}}
+
+
+name		_Close
+tooltip		Close Project
+sensitiveon	PROJECT_OPENED
+insensitiveon	PROJECT_CLOSED
+sensitive	False
+action
+{{{
+
+from quickdesktop import projectutils
+p=projectutils.getActiveProject()
+projectutils.removeProject(p)
+
+}}}
+
+
+name		_Quit
+tooltip		Quit
+sensitiveon	None
+insensitiveon	None
+sensitive	True
+action
+{{{
+
+from quickdesktop.tool import quit_gtk
+from quickdesktop import projectutils
+p=projectutils.getActiveProject()
+if p:
+   quit_gtk(None)
+else:
+   gtk.main_quit()
+
+}}}
