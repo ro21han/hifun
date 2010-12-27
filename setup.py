@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(name='HifunGUI',
       version='1.0',
-      description='GUI package for HiFUN'
+      description='GUI package for HiFUN',
       author='sandi',
       author_email='nikhil.shende@sandi.co.in',
       url='http://www.sandi.co.in',
