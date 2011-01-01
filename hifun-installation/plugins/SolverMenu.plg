@@ -19,3 +19,14 @@ action
 from hifun.parsers import solverio
 solverio.writeSolverData()
 }}}
+
+name		_Execute
+tooltip		Execute Solver
+sensitiveon	RUN_ACTIVATED
+insensitiveon	PROJECT_CLOSED
+sensitive	False
+action
+{{{
+from hifun.project import executeSolver
+executeSolver.SolverRun()
+}}}
