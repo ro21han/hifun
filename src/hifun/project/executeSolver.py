@@ -31,14 +31,14 @@ class SolverExecute:
 	self.runname=run or self.project[self.runname]['name']
 	self.no_of_subd=self.project[self.runname]['subdomians']
 	self.runpath=os.path.join(self.project[self.runname]['path'])
-	self.rep=p.getRepository()
-	self.machfile=p.getMachinsFile()
-	self.flags=p.getSolverFlags()
+	self.rep=project.getRepository()
+	self.machfile=project.getMachineFile()
+	self.flags=project.getSolverFlags()
 
 	self.subd_dir=os.path.join(self.project['projecdir'],'Subds_')+str(self.no_of_subd)
 	self.subd_dir_link=os.path.join(self.project['projecdir'],'Flowsolver_input/Subdomains')
 
-        if not os.path.isfile(os.path.join(self.runpath,'Flowsolver_input/userchoice.inp')) or \ 
+        if not os.path.isfile(os.path.join(self.runpath,'Flowsolver_input/userchoice.inp')) or \
 	   not os.path.isfile(os.path.join(self.runpath,'Flowsolver_input/freestream.inp')) or \
 	   not os.path.isfile(os.path.join(self.runpath,'Flowsolver_input/run_option.inp')) or \
 	   not os.path.isfile(os.path.join(self.runpath,'Flowsolver_input/boundary_information.inp')) or \
@@ -81,7 +81,9 @@ class SolverExecute:
 	solvercmd=[mpiexe,'-machinefile',self.machfile,'-np',str(self.no_of_subd),rans_exe]
 	if self.flags:
 	   solvercmd.insert(1,self.flags)
-
+	cpath=os.getcwd()
+	os.chdir(self.runpath)
 	p1=subprocess.Popen(solvercmd)
 
 	p1.wait()
+	os.chdir(cpath)
