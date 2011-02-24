@@ -5,6 +5,7 @@ from quickdesktop import common
 from quickdesktop import projectutils
 from quickdesktop import events
 from quickdesktop import resource
+from hifun import tools
 import os
 import unittest
 import re
@@ -12,9 +13,8 @@ import re
 RUN_ACTIVATED = "RUN_ACTIVATED"
 RUN_ADDED     = "RUN_ADDED"
 
-
 def getRepository():
-    return configuration.getConfigValue("toolsettings:repository")
+    return tools.getRepository()
 
 def openProject(path):
     path = os.path.abspath(path)
@@ -124,7 +124,7 @@ class Project(storage.Storable):
             if self.activerun:
                 self.setActiveRun(self.activerun)
         else:
-            rep = getRepository()#this will be called only for new creation
+            rep = tools.getRepository()#this will be called only for new creation
             self.name = name
             self.mshfile = mshfile
             self.cellzone = cellzone
@@ -263,7 +263,7 @@ class Project(storage.Storable):
 
 
 def getNewProjectName(basename):
-    rep = getRepository()
+    rep = tools.getRepository()
     print rep
     if not os.path.exists(os.path.join(rep, basename)):
         return basename
@@ -279,8 +279,7 @@ class TestProject(unittest.TestCase):
         name = "Dummy"
         p = Project(name, "/tmp/x.msh", bcs=[("Wall1","wall"), ("Wall2","wall"), ("Fluid1", "fluid")])
         self.assertEqual(p['name'], name)
-        cm = configuration.ConfigurationManager()
-        rep = cm.getConfigValue("toolsettings:repository")
+        rep = tools.getRepository()
         path = os.path.join(rep, name)
         self.assertEqual(p['projectdir'], path)
         self.assertTrue(os.path.exists(p['projectdir']))

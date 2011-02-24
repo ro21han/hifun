@@ -8,6 +8,9 @@ gtk.gdk.threads_init()
 
 if __name__=="__main__":
     import sys
-    const.home = sys.argv[1]
+    const.home = sys.path[0]
     tw = ToolWindow()
     tw.show()
+    gtk.gdk.threads_enter()
+    gtk.main()
+    gtk.gdk.threads_leave()
