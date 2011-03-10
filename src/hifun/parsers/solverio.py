@@ -71,7 +71,7 @@ def writeSolverData():
     if not p.runs:
         quickui.error("You should create a Run before doing this operation.")
         return
-    SolverInpWriter(project=p, runname=p.runs.keys()[0])
+    SolverInpWriter(project=p, runname=p.activerun)
 
 class SolverInpWriter:
 
@@ -81,7 +81,7 @@ class SolverInpWriter:
         self.runname=runname
 
         if not self.runname:
-            self.runname = self.project.runs.keys()[0]
+            self.runname = p.activerun
         
         path=os.path.join(self.project[self.runname]['path'],"run.tree")
         self.runtree=common.parseTree(path,root=self.runname)
@@ -108,6 +108,8 @@ class SolverInpWriter:
         self._writeSolverData('run_option.inp',solverdata,templatePath,)
         templatePath=self._getTemplate('boundary_information.inp_template')
         self._writeSolverData('boundary_information.inp',solverdata,templatePath,)
+        templatePath=self._getTemplate('lift_drag_contrib.inp_template')
+        self._writeSolverData('lift_drag_contrib.inp',solverdata,templatePath,)
         templatePath=self._getTemplate('halt.inp_template')
         self._writeSolverData('halt.inp',solverdata,templatePath,)
 
@@ -276,6 +278,13 @@ class SolverInpWriter:
 		    out.write('\n') 
 	      out.close()
 
+	   elif outfile == 'lift_drag_contrib.inp':
+              outfile=self.rans_dir+str('/')+outfile
+              out=open(outfile,"w")
+              if solverdata['no_of_walls'] > 0:
+	         for item in solverdata['wallList']:
+	  	     out.write(str(int(solverdata['contribution_'+item]))+'\n')
+	      out.close()
 	   else:
               outfile=self.rans_dir+str('/')+outfile
               out=open(outfile,"w")

@@ -16,6 +16,12 @@ RUN_ADDED     = "RUN_ADDED"
 def getRepository():
     return tools.getRepository()
 
+def getMachineFile():
+    return configuration.getConfigValue("toolsettings:machfile")
+
+def getSolverFlags():
+    return configuration.getConfigValue("toolsettings:rans_flag")
+
 def openProject(path):
     path = os.path.abspath(path)
     name = os.path.basename(path)
@@ -65,7 +71,7 @@ class Run(storage.Storable):
         runTree.append(bctree)
 
         cm = configuration.ConfigurationManager(savespace=self.path)
-        cm.getConfiguration("wall")
+        cm.getConfiguration("__wall__")
 
         def write(cm, originalconfid, confid):
             def isCellzoneSet():
@@ -101,9 +107,9 @@ class Run(storage.Storable):
                 print i['quickid']
             cm._writeConfiguration(confdata, path)
 
-        [write(cm, "fluid", fluidid) for fluidid in self.project._getBoundaries(self.project.pfluid)]
-        [write(cm, "wall", wallid) for wallid in self.project._getBoundaries(self.project.pwall)]
-        [write(cm, "pressure_inlet", prinlet) for prinlet in self.project._getBoundaries(self.project.pinlet)]
+        [write(cm, "__fluid__", fluidid) for fluidid in self.project._getBoundaries(self.project.pfluid)]
+        [write(cm, "__wall__", wallid) for wallid in self.project._getBoundaries(self.project.pwall)]
+        [write(cm, "__pressure_inlet__", prinlet) for prinlet in self.project._getBoundaries(self.project.pinlet)]
         treepath = os.path.join(self.path, "run.tree")
         common.writeTree(runTree, treepath)
         filepath = os.path.join(self.path, self.name)
